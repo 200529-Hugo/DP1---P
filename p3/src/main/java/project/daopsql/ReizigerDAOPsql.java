@@ -8,12 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReizigerDAOPsql implements ReizigerDAO {
+    // Fields
     private Connection conn;
 
+    // Constructor
     public ReizigerDAOPsql(Connection conn) {
         this.conn = conn;
     }
 
+    // Methods
+    // Save a reiziger
     @Override
     public boolean save(Reiziger reiziger) {
         String query = "INSERT INTO reiziger (reiziger_id, voorletters, tussenvoegsel, achternaam, geboortedatum) VALUES (?, ?, ?, ?, ?)";
@@ -32,6 +36,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
         }
     }
 
+    // Update a reiziger
     @Override
     public boolean update(Reiziger reiziger) {
         String query = "UPDATE reiziger SET voorletters = ?, tussenvoegsel = ?, achternaam = ?, geboortedatum = ? WHERE reiziger_id = ?";
@@ -50,6 +55,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
         }
     }
 
+    // Delete a reiziger
     @Override
     public boolean delete(Reiziger reiziger) {
         String query = "DELETE FROM reiziger WHERE reiziger_id = ?";
@@ -64,6 +70,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
         }
     }
 
+    // Find a reiziger by id
     @Override
     public Reiziger findById(int id) {
         String query = "SELECT reiziger_id, voorletters, tussenvoegsel, achternaam, geboortedatum FROM reiziger WHERE reiziger_id = ?";
@@ -86,6 +93,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
         return null;
     }
 
+    // Find reizigers by geboortedatum
     @Override
     public List<Reiziger> findByGbdatum(String datum) {
         String query = "SELECT reiziger_id, voorletters, tussenvoegsel, achternaam, geboortedatum FROM reiziger WHERE geboortedatum = ?";
@@ -110,6 +118,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
         }
     }
 
+    // Find all reizigers
     @Override
     public List<Reiziger> findAll() {
         String query = "SELECT reiziger_id, voorletters, tussenvoegsel, achternaam, geboortedatum FROM reiziger";

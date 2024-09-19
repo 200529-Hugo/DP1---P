@@ -10,17 +10,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AdresDAOPsql implements AdresDAO {
-    private Connection conn;
-    private ReizigerDAO rdao;
+    // Fields
+    private final Connection conn;
+    private final ReizigerDAO rdao;
 
+    // Constructor
     public AdresDAOPsql(Connection conn, ReizigerDAO rdao) {
         this.conn = conn;
         this.rdao = rdao;
     }
 
+    // Methods
+    // Save an adres
     @Override
     public boolean save(Adres adres) {
         String query = "INSERT INTO adres (adres_id, postcode, huisnummer, straat, woonplaats, reiziger_id) VALUES (?, ?, ?, ?, ?, ?)";
@@ -40,6 +45,7 @@ public class AdresDAOPsql implements AdresDAO {
         }
     }
 
+    // Update an adres
     @Override
     public boolean update(Adres adres) {
         String query = "UPDATE adres SET postcode = ?, huisnummer = ?, straat = ?, woonplaats = ? WHERE adres_id = ?";
@@ -58,6 +64,7 @@ public class AdresDAOPsql implements AdresDAO {
         }
     }
 
+    // Delete an adres
     @Override
     public boolean delete(Adres adres) {
         String query = "DELETE FROM adres WHERE adres_id = ?";
@@ -72,6 +79,7 @@ public class AdresDAOPsql implements AdresDAO {
         }
     }
 
+    // Find an adres by reiziger
     @Override
     public Adres findByReiziger(Reiziger reiziger) {
         String query = "SELECT adres_id, postcode, huisnummer, straat, woonplaats FROM adres WHERE reiziger_id = ?";
@@ -95,6 +103,7 @@ public class AdresDAOPsql implements AdresDAO {
         return null;
     }
 
+    // Find all adressen
     @Override
     public List<Adres> findAll() {
         String query = "SELECT adres_id, postcode, huisnummer, straat, woonplaats, reiziger_id FROM adres";
@@ -116,7 +125,7 @@ public class AdresDAOPsql implements AdresDAO {
             return adressen;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            return Collections.emptyList();
         }
     }
 }

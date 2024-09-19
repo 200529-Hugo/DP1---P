@@ -30,6 +30,7 @@ public class Main {
     }
 
     public static void getConnection() throws SQLException {
+        // Change the url to your own database
         String url = "jdbc:postgresql://localhost/ovchip?user=hugodeheus&password=root";
         connection = DriverManager.getConnection(url);
     }

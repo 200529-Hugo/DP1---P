@@ -1,16 +1,27 @@
-package project.domain;
+package opdracht.domain;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+@Entity
 public class Reiziger {
     // Fields
+    @Id
+    @Column(name = "reiziger_id")
     private int id;
+
     private String voorletters;
     private String tussenvoegsel;
     private String achternaam;
+
+    @Temporal(TemporalType.DATE)
     private Date geboortedatum;
 
-    // Constructor
+    // Constructors
+    public Reiziger() {
+    }
+
     public Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum) {
         this.id = id;
         this.voorletters = voorletters;
@@ -19,9 +30,13 @@ public class Reiziger {
         this.geboortedatum = geboortedatum;
     }
 
-    // Getters and Setters
+    // Getters and setters methods
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getVoorletters() {
@@ -56,20 +71,20 @@ public class Reiziger {
         this.geboortedatum = geboortedatum;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNaam() {
-        return (tussenvoegsel == null || tussenvoegsel.isEmpty())
-                ? voorletters + " " + achternaam
-                : voorletters + " " + tussenvoegsel + " " + achternaam;
+        String tsnvgsl;
+        if (tussenvoegsel == null) {
+            tsnvgsl = "";
+        } else {
+            tsnvgsl = tussenvoegsel + " ";
+        }
+        return voorletters + " " + tsnvgsl + achternaam;
     }
 
-    // Methods
+    // toString method
     @Override
     public String toString() {
-        return getNaam() + " (" + geboortedatum + ")\n";
+        return this.getNaam() + " (" + geboortedatum + ") \n";
     }
 }
 

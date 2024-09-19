@@ -1,8 +1,8 @@
 package project.domain;
 
-import project.domain.Reiziger;
-
 public class Adres {
+
+    //Fields
     private int id;
     private String postcode;
     private String huisnummer;
@@ -10,8 +10,7 @@ public class Adres {
     private String woonplaats;
     private Reiziger reiziger;
 
-
-
+    //Constructor
     public Adres(int id, String postcode, String huisnummer, String straat, String woonplaats, Reiziger reiziger) {
         this.id = id;
         this.postcode = postcode;
@@ -21,6 +20,7 @@ public class Adres {
         this.reiziger = reiziger;
     }
 
+    //Getters and Setters
     public int getId() {
         return id;
     }
@@ -65,6 +65,7 @@ public class Adres {
         this.reiziger = reiziger;
     }
 
+    //Methods
     @Override
     public String toString() {
         return postcode + " " + huisnummer + ", " + straat + ", " + woonplaats + " (Reiziger: " + reiziger.getNaam() + ")\n";
