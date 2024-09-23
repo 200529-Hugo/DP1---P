@@ -49,7 +49,7 @@ public class Main {
         System.out.println("---- Test ReizigerDAO ----");
 
         // Create a new Reiziger
-        Reiziger reiziger = new Reiziger(6, "H", "", "de Heus", Date.valueOf("2004-02-23"));
+        Reiziger reiziger = new Reiziger(6, "H", "de", "Heus", Date.valueOf("2004-02-23"));
         System.out.print("Saving reiziger: ");
         if (reizigerDAO.save(reiziger)) {
             System.out.println("Success!");
@@ -100,7 +100,7 @@ public class Main {
         System.out.println("---- Test AdresDAO ----");
 
         // Create a new Reiziger and Adres
-        Reiziger reiziger = new Reiziger(6, "H", "", "de Heus", Date.valueOf("2004-02-23"));
+        Reiziger reiziger = new Reiziger(6, "H", "de", "Heus", Date.valueOf("2004-02-23"));
         reizigerDAO.save(reiziger);
         Adres adres = new Adres(6, "1234AB", "1", "Straat", "Woonplaats", reiziger);
         System.out.print("Saving adres: ");
