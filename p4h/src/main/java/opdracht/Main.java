@@ -58,30 +58,30 @@ public class Main {
         System.out.println();
 
         // Create a new reiziger and persist it in the database
-        Reiziger sietske = new Reiziger(6, "S", null, "Boers", java.sql.Date.valueOf("1999-08-11"));
-        System.out.print("Reiziger sietske toevoegen: ");
-        if (rdao.save(sietske)) {
+        Reiziger reiziger = new Reiziger(6, "H", "de", "Heus", Date.valueOf("2004-02-23"));
+        System.out.print("Reiziger toevoegen: ");
+        if (rdao.save(reiziger)) {
             System.out.println("Gelukt!");
-            System.out.println("Reiziger sietske: " + sietske);
+            System.out.println("Reiziger: " + reiziger);
         } else {
             System.out.println("Mislukt!");
         }
         System.out.println();
 
         // Update the new reiziger in the database
-        sietske.setAchternaam("Boersma");
-        System.out.print("Reiziger sietske updaten: ");
-        if (rdao.update(sietske)) {
+        reiziger.setAchternaam("Groot");
+        System.out.print("Reiziger updaten: ");
+        if (rdao.update(reiziger)) {
             System.out.println("Gelukt!");
-            System.out.println("Reiziger sietske: " + sietske);
+            System.out.println("Reiziger: " + reiziger);
         } else {
             System.out.println("Mislukt!");
         }
         System.out.println();
 
         // Delete the new reiziger from the database
-        System.out.print("Reiziger sietske verwijderen: ");
-        if (rdao.delete(sietske)) {
+        System.out.print("Reiziger verwijderen: ");
+        if (rdao.delete(reiziger)) {
             System.out.println("Gelukt!");
         } else {
             System.out.println("Mislukt!");
@@ -105,37 +105,37 @@ public class Main {
         System.out.println();
 
         // Create a new reiziger and address and persist it in the database
-        Reiziger sietske = new Reiziger(6, "S", null, "Boers", java.sql.Date.valueOf("1999-08-11"));
-        rdao.save(sietske);
-        Adres sietskeAdres = new Adres(6, "1234AB", "1", "Straatweg", "Utrecht", sietske);
-        System.out.print("Adres sietske toevoegen: ");
-        if (adao.save(sietskeAdres)) {
+        Reiziger reiziger = new Reiziger(6, "H", "de", "Heus", Date.valueOf("2004-02-23"));
+        rdao.save(reiziger);
+        Adres reizigerAdres = new Adres(6, "1234AB", "1", "Straatweg", "Utrecht", reiziger);
+        System.out.print("Adres toevoegen: ");
+        if (adao.save(reizigerAdres)) {
             System.out.println("Gelukt!");
-            System.out.println("Adres sietske: " + sietskeAdres);
+            System.out.println("Adres: " + reizigerAdres);
         } else {
             System.out.println("Mislukt!");
         }
         System.out.println();
 
         // Update the new address in the database
-        sietskeAdres.setHuisnummer("2");
-        System.out.print("Adres sietske updaten: ");
-        if (adao.update(sietskeAdres)) {
+        reizigerAdres.setHuisnummer("2");
+        System.out.print("Adres updaten: ");
+        if (adao.update(reizigerAdres)) {
             System.out.println("Gelukt!");
-            System.out.println("Adres sietske: " + sietskeAdres);
+            System.out.println("Adres: " + reizigerAdres);
         } else {
             System.out.println("Mislukt!");
         }
         System.out.println();
 
         // Delete the new address from the database
-        System.out.print("Adres sietske verwijderen: ");
-        if (adao.delete(sietskeAdres)) {
+        System.out.print("Adres verwijderen: ");
+        if (adao.delete(reizigerAdres)) {
             System.out.println("Gelukt!");
         } else {
             System.out.println("Mislukt!");
         }
-        rdao.delete(sietske);
+        rdao.delete(reiziger);
         System.out.println();
     }
 
